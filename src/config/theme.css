@@ -1,0 +1,39 @@
+/* Final palette: edit these variables to recolor the site. */
+:root {
+  --bg:#080e19;
+  --surface:#111b2a;
+  --surface2:#162437;
+  --surface3:#1d3145;
+  --ink:#f3f6ef;
+  --soft:#b5c7ce;
+  --muted:#869aa9;
+  --edge:#405567;
+  --edge2:rgba(172,215,215,.15);
+  --lime:#b6ff5c;
+  --lime-deep:#81c83d;
+  --mint:#80dfcb;
+  --orange:#f4b46e;
+  --red:#f88383;
+  --dark:#06110f;
+  --shadow:0 20px 70px #0007
+}
+
+html[data-theme=light] {
+  --bg:#eef2ec;
+  --surface:#fffef8;
+  --surface2:#ecf4f1;
+  --surface3:#dce9e3;
+  --ink:#142a35;
+  --soft:#3b5863;
+  --muted:#56717b;
+  --edge:#96abb2;
+  --edge2:rgba(34,81,99,.17);
+  --lime:#85b73d;
+  --lime-deep:#639e28;
+  --mint:#247e79;
+  --orange:#c07d37;
+  --red:#cb4b54;
+  --dark:#f8fcf2;
+  --shadow:0 24px 55px #29465320
+}
+

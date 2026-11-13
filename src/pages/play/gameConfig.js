@@ -1,3 +1,9 @@
-// The complete, unchanged Godot web export from Build.zip lives in public/game/.
-// Vite serves public/ at the site root; the entry filename must match the export.
-export const GAME_URL = `${import.meta.env.BASE_URL}game/Iah-1.html`;
+import { siteConfig } from '../../config/site';
+
+// Keep the complete Godot web export in public/game/ with its original filenames.
+// The final build's entry path is configured in src/config/site.js.
+export const GAME_URL = siteConfig.gameEntry
+  ? /^(https?:)?\/\//.test(siteConfig.gameEntry)
+    ? siteConfig.gameEntry
+    : `${import.meta.env.BASE_URL}${siteConfig.gameEntry.replace(/^\//, '')}`
+  : '';
