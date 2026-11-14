@@ -55,7 +55,7 @@ button {
 }
 ::selection {
   background:var(--accent);
-  color:var(--navy-deep)
+  color:var(--on-accent)
 }
 main:focus {
   outline:none
@@ -129,7 +129,7 @@ em {
 }
 .btn-green {
   background:var(--accent);
-  color:var(--navy-deep);
+  color:var(--on-accent);
   border-color:var(--accent-text);
   box-shadow:0 7px 26px color-mix(in srgb,var(--accent) 7.06%,transparent)
 }
@@ -252,7 +252,7 @@ em {
 }
 .nav button[aria-selected=true] {
   background:var(--accent);
-  color:var(--navy-deep)
+  color:var(--on-accent)
 }
 .nav button:hover:not([aria-selected=true]) {
   color:var(--accent-text);
@@ -301,7 +301,7 @@ em {
   overflow:visible;
   border-radius:7px;
   background:var(--accent);
-  color:var(--navy-deep);
+  color:var(--on-accent);
   font-size:13px;
   font-weight:800;
   text-decoration:none
@@ -484,7 +484,7 @@ em {
   width:92%;
   aspect-ratio:1;
   border-radius:50%;
-  background:radial-gradient(circle at 28% 27%,#efc07b,#bc8a5d 44%,#75534b 73%,#35334a);
+  background:radial-gradient(circle at 28% 27%,#e38951,#bc8a5d 44%,#75534b 73%,#35334a);
   box-shadow:inset -35px -35px 60px color-mix(in srgb,var(--navy-deep) 53.33%,transparent),0 0 90px color-mix(in srgb,var(--accent) 7.84%,transparent);
   opacity:.9
 }
@@ -547,7 +547,7 @@ em {
   left:12px
 }
 .habitat-label {
-  --accent-text: var(--gold);
+  --accent-text: #E38951;
   position:absolute;
   top:14%;
   right:8%;
@@ -877,7 +877,7 @@ em {
 }
 .resource-nav button[aria-pressed=true] {
   background:var(--accent);
-  color:var(--navy-deep);
+  color:var(--on-accent);
   border-color:var(--accent-text)
 }
 .results-count {
@@ -1272,18 +1272,18 @@ em {
   font-weight:800
 }
 .setting-choice button[aria-pressed=true] {
-  color:var(--navy-deep);
+  color:var(--on-accent);
   background:var(--accent);
   border-color:var(--accent-text)
 }
 .game-frame,.lore-window {
-  --accent-text: var(--gold);
-  --heading-accent: var(--gold);
+  --accent-text: #E38951;
+  --heading-accent: #E38951;
   --soft: var(--on-dark-muted);
   --muted: var(--on-dark-muted);
   --edge: var(--on-dark-edge);
   --ink: var(--on-dark-text);
-  --sand: var(--gold);
+  --sand: #E38951;
 }
 .game-frame {
   position:relative;
@@ -1310,7 +1310,7 @@ em {
   width:380px;
   height:380px;
   border-radius:50%;
-  background:radial-gradient(circle at 30% 35%,#efc07b,#95704f 60%,#23334b);
+  background:radial-gradient(circle at 30% 35%,#e38951,#95704f 60%,#23334b);
   opacity:.6
 }
 .world-ground {
@@ -1318,6 +1318,7 @@ em {
   inset:auto 0 0;
   height:40%;
   background:#3c3944;
+  -webkit-clip-path: polygon(0 35%,17% 15%,40% 32%,60% 0,100% 28%,100% 100%,0 100%);
   clip-path:polygon(0 35%,17% 15%,40% 32%,60% 0,100% 28%,100% 100%,0 100%);
   opacity:.4
 }
@@ -1412,6 +1413,7 @@ em {
   justify-content:center;
   padding:45px;
   background:radial-gradient(ellipse at center,color-mix(in srgb,var(--navy-deep) 60.00%,transparent),color-mix(in srgb,var(--navy-deep) 90.98%,transparent));
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter:blur(5px)
 }
 .start-dialog {
@@ -1589,6 +1591,7 @@ body.game-expanded,body.locked {
   inset:0;
   z-index:1200;
   background:color-mix(in srgb,var(--navy-deep) 92%,transparent);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter:blur(14px);
   display:flex;
   align-items:center;
@@ -1652,7 +1655,7 @@ body.game-expanded,body.locked {
   bottom:12px;
   left:12px;
   background:var(--accent);
-  color:var(--navy-deep);
+  color:var(--on-accent);
   padding:7px 10px;
   border-radius:3px;
   font-size:9px;
@@ -1679,8 +1682,8 @@ body.game-expanded,body.locked {
   color:var(--soft)
 }
 .lore-quote {
-  background:var(--gold);
-  color:var(--navy-deep);
+  background:var(--accent);
+  color:var(--on-accent);
   border-radius:10px 10px 10px 0;
   padding:14px 17px;
   font-size:12px;
@@ -2097,7 +2100,7 @@ body.game-expanded,body.locked {
     height:225px
   }
   .habitat-label {
-  --accent-text: var(--gold);
+  --accent-text: #E38951;
     font-size:7px;
     padding:6px 9px;
     right:3%;

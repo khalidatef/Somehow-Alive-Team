@@ -1,16 +1,16 @@
 :root {
   /* Approved team palette. Edit these values to update the website identity. */
-  --bg: #16213E;
+  --bg: #07245A;
   --surface: #0F3460;
-  --gold: #EFC07B;
-  --text: #FFFFFF;
+  --gold: #C75426;
+  --text: #F6E7DB;
   --muted: #AAB4C0;
   --teal: #2CE8F5;
-  --mars: #F77622;
+  --mars: #C75426;
 
   --blue: var(--surface);
   --navy: var(--bg);
-  --navy-deep: #1A1A2E;
+  --navy-deep: #081A38;
   --surface2: var(--surface);
   --surface3: #21446b;
   --ink: var(--text);
@@ -20,15 +20,16 @@
   --on-dark-text: #FFFFFF;
   --on-dark-muted: #AAB4C0;
   --on-dark-edge: #3d5674;
-  --accent: var(--gold);
-  --accent-text: var(--gold);
-  --accent-deep: #d7a35f;
-  --accent-hover: #f6d7aa;
+  --accent: #B94C22;
+  --accent-text: #E38951;
+  --on-accent: #FFFFFF;
+  --accent-deep: #A8401C;
+  --accent-hover: #A8401C;
   --orbi: var(--teal);
-  --heading-accent: var(--gold);
+  --heading-accent: #E38951;
   --red: #ee796f;
   --success: #86c8a4;
-  --sand: var(--gold);
+  --sand: var(--heading-accent);
   --shadow: 0 24px 70px #0004;
   color-scheme: dark;
 }
@@ -36,7 +37,7 @@ html[data-theme=light] {
   --bg: #f8f4eb;
   --surface: #ffffff;
   --blue: #0F3460;
-  --navy: #16213E;
+  --navy: #07245A;
   --surface2: #e8edf4;
   --surface3: #dce5ef;
   --text: var(--navy-deep);
