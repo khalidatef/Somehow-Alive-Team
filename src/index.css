@@ -8,6 +8,7 @@ html {
   scroll-padding-top:120px
 }
 body {
+  isolation:isolate;
   margin:0;
   min-width:320px;
   background:radial-gradient(ellipse at 88% 0,color-mix(in srgb,var(--accent) 4.31%,transparent),transparent 34%),var(--bg);
@@ -17,15 +18,42 @@ body {
   line-height:1.6;
   -webkit-font-smoothing:antialiased
 }
-body::before {
-  content:'';
+.space-background {
   position:fixed;
   inset:0;
   z-index:-1;
   pointer-events:none;
-  opacity:.22;
-  background:radial-gradient(1px 1px at 10% 20%,var(--soft),transparent),radial-gradient(1px 1px at 80% 40%,var(--soft),transparent),radial-gradient(1px 1px at 40% 80%,var(--soft),transparent);
-  background-size:360px 280px
+  overflow:hidden;
+  background:radial-gradient(ellipse at 12% 20%,#164b8824,transparent 48%),radial-gradient(ellipse at 90% 75%,#2ce8f508,transparent 40%)
+}
+.space-background>span {
+  position:absolute;
+  inset:-128px;
+  background-repeat:repeat
+}
+.stars-far {
+  opacity:.38;
+  background-image:radial-gradient(1px 1px at 24px 48px,#e4eeff,transparent),radial-gradient(.8px .8px at 142px 211px,#aac7ed,transparent),radial-gradient(1px 1px at 318px 92px,#e4eeff,transparent),radial-gradient(.8px .8px at 454px 287px,#e4eeff,transparent),radial-gradient(1px 1px at 231px 372px,#aac7ed,transparent);
+  background-size:523px 431px;
+  animation:stars-drift 140s linear infinite alternate
+}
+.stars-near {
+  opacity:.48;
+  background-image:radial-gradient(1.5px 1.5px at 87px 139px,#eef5ff,transparent),radial-gradient(1px 1px at 397px 318px,#a2e7f0,transparent),radial-gradient(1.2px 1.2px at 602px 71px,#eef5ff,transparent),radial-gradient(1px 1px at 272px 459px,#efb890,transparent);
+  background-size:719px 563px;
+  animation:stars-drift-near 95s linear infinite alternate,stars-shimmer 9s ease-in-out infinite alternate
+}
+@keyframes stars-drift {
+  to { transform:translate3d(72px,-96px,0) }
+}
+@keyframes stars-drift-near {
+  to { transform:translate3d(-56px,-80px,0) }
+}
+@keyframes stars-shimmer {
+  to { opacity:.28 }
+}
+html[data-theme=light] .space-background {
+  display:none
 }
 button,input,a {
   font:inherit

@@ -85,7 +85,7 @@ export default function App() {
     if (storyMode === 'start') setPlaying(true);
     setStoryMode(null);
   }, [storyMode]);
-  return <><div inert={storyMode !== null ? true : undefined}><a className="skip-link" href="#main-content" onClick={event => {
+  return <><div className="space-background" aria-hidden="true"><span className="stars-far" /><span className="stars-near" /></div><div inert={storyMode !== null ? true : undefined}><a className="skip-link" href="#main-content" onClick={event => {
         event.preventDefault();
         document.getElementById('main-content').focus();
       }}>Skip to content</a><Header page={page} onNavigate={navigate} /><main id="main-content" tabIndex={-1}>
