@@ -75,12 +75,11 @@ em {
   color:var(--heading-accent)
 }
 .shell {
-  width:min(1240px,calc(100% - 64px));
+  width:min(1760px,calc(100% - clamp(32px,5vw,120px)));
   margin-inline:auto
 }
 .page {
-  min-height:65vh;
-  animation:page-in .35s ease
+  min-height:65vh
 }
 .eyebrow {
   font-family:'Nunito','Cairo',sans-serif;
@@ -161,24 +160,43 @@ em {
   margin:30px 0 70px
 }
 .header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:28px;
-  min-height:100px;
+  width:100%;
+  display:block;
   position:sticky;
   top:0;
   z-index:70;
   background:color-mix(in srgb,var(--bg) 94%,transparent);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter:blur(16px);
   border-bottom:1px solid var(--edge)
 }
+.header-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  min-height:88px
+}
 .brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
   border:0;
   padding:0;
   background:transparent;
   color:var(--heading-accent);
   flex-shrink:0
+}
+.brand-symbol {
+  display:grid;
+  place-items:center;
+  width:42px;
+  height:42px;
+  border:1px solid color-mix(in srgb,var(--gold) 60%,transparent);
+  border-radius:50%;
+  font-size:26px;
+  color:var(--gold);
+  box-shadow:inset 0 0 0 5px color-mix(in srgb,var(--gold) 7%,transparent)
 }
 .brand b {
   position:relative;
@@ -197,12 +215,13 @@ em {
   height:2px;
   margin-top:8px;
   background:linear-gradient(90deg,var(--sand),transparent);
+  -webkit-clip-path: polygon(0 30%,33% 0,70% 55%,100% 10%,100% 100%,0 100%);
   clip-path:polygon(0 30%,33% 0,70% 55%,100% 10%,100% 100%,0 100%)
 }
 .brand small {
   display:block;
   color:var(--muted);
-  font-size:7px;
+  font-size:8px;
   font-weight:800;
   letter-spacing:.18em;
   margin-top:7px
@@ -210,11 +229,11 @@ em {
 .nav {
   display:flex;
   align-items:center;
-  gap:3px;
+  gap:4px;
   padding:5px;
-  border:1px solid var(--edge);
+  border:1px solid transparent;
   border-radius:10px;
-  background:var(--surface2)
+  background:color-mix(in srgb,var(--surface) 25%,transparent)
 }
 .nav button {
   display:flex;
@@ -225,11 +244,11 @@ em {
   background:transparent;
   color:var(--soft);
   border-radius:6px;
-  padding:11px 13px;
-  font-size:11px;
+  min-height:44px;
+  padding:10px 19px;
+  font-size:14px;
   font-weight:800;
-  white-space:nowrap;
-  transition:background .2s,color .2s
+  white-space:nowrap
 }
 .nav button[aria-selected=true] {
   background:var(--accent);
@@ -244,8 +263,11 @@ em {
   font-weight:600;
   opacity:.55
 }
+.nav-play-icon {
+  font-size:16px
+}
 .header-tag {
-  font-size:8px;
+  font-size:10px;
   letter-spacing:.12em;
   font-weight:800;
   line-height:1.8;
@@ -265,6 +287,7 @@ em {
   width:1px;
   height:1px;
   overflow:hidden;
+  -webkit-clip-path: inset(50%);
   clip-path:inset(50%);
   white-space:nowrap
 }
@@ -273,6 +296,7 @@ em {
   width:auto;
   height:auto;
   padding:10px 18px;
+  -webkit-clip-path: none;
   clip-path:none;
   overflow:visible;
   border-radius:7px;
@@ -284,46 +308,48 @@ em {
 }
 .hero-layout {
   display:grid;
-  grid-template-columns:1.08fr 1fr;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
   align-items:center;
-  gap:35px;
-  min-height:690px;
-  padding-top:55px;
-  padding-bottom:68px
+  gap:clamp(32px,4vw,80px);
+  min-height:0;
+  padding-top:46px;
+  padding-bottom:50px
 }
 .hero-copy {
   position:relative;
   z-index:2
 }
 .hero-copy h1 {
-  font-size:clamp(76px,7.8vw,118px);
-  line-height:.96;
-  margin:21px 0 26px;
-  letter-spacing:-.05em
+  font-size:clamp(70px,6.7vw,108px);
+  line-height:1;
+  margin:16px 0 22px;
+  letter-spacing:-.04em
 }
 .hero-copy h1 em {
-  color:var(--heading-accent)
+  color:var(--ink)
 }
 .hero-copy h2 {
-  font-size:24px;
+  font-size:25px;
   line-height:1.4;
   letter-spacing:-.01em;
   margin-bottom:18px
 }
 .hero-copy h2 span {
   color:var(--accent-text);
-  font-size:20px
+  font-size:19px;
+  color:var(--soft)
 }
 .hero-copy .lead {
-  font-size:15px;
-  max-width:520px
+  font-size:16px;
+  line-height:1.8;
+  max-width:610px
 }
 .hero-tools {
   display:flex;
   gap:10px;
   align-items:center;
   flex-wrap:wrap;
-  margin-top:28px
+  margin-top:24px
 }
 .duration {
   font-size:10px;
@@ -333,17 +359,122 @@ em {
 }
 .hero-footnote {
   color:var(--muted);
-  font-size:11px;
+  font-size:12px;
   margin-top:17px
 }
 .hero-visual {
-  overflow:clip;
-  height:510px;
+  min-width:0;
   position:relative;
   isolation:isolate;
+  padding:0 0 4px 14px
+}
+.photo-heading {
   display:flex;
   align-items:center;
-  justify-content:center
+  justify-content:space-between;
+  gap:12px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  padding:0 2px 13px
+}
+.photo-heading>span:last-child {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--accent-text)
+}
+.photo-heading i {
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--orbi)
+}
+.hero-moment {
+  aspect-ratio:3/2;
+  width:100%;
+  border:1px solid color-mix(in srgb,var(--gold) 55%,transparent);
+  border-radius:19px;
+  box-shadow:10px 12px 0 color-mix(in srgb,var(--surface) 65%,transparent),var(--shadow)
+}
+/* Frame the supplied illustration inside its social-post border; the source stays intact. */
+.ai-art.hero-moment img {
+  position:absolute;
+  width:104.5%;
+  height:auto;
+  max-width:none;
+  left:-2.25%;
+  top:-16.1%
+}
+.hero-moment .ai-watermark {
+  left:auto;
+  right:12px;
+  bottom:13px
+}
+.orbi-avatar {
+  display:inline-flex;
+  flex:none;
+  align-items:center;
+  justify-content:center;
+  width:64px;
+  height:64px;
+  background:#fff;
+  border:3px solid color-mix(in srgb,var(--gold) 75%,#fff);
+  border-radius:50%;
+  overflow:hidden
+}
+.orbi-avatar img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  image-rendering:pixelated
+}
+.orbi-companion {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:17px 19px;
+  border:1px solid var(--edge);
+  border-radius:14px;
+  background:var(--bg)
+}
+.orbi-label {
+  display:block;
+  color:var(--orbi);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.1em;
+  line-height:1.5;
+  margin-bottom:5px
+}
+.orbi-companion p {
+  font-size:14px;
+  line-height:1.55;
+  color:var(--ink)
+}
+.hero-companion {
+  position:relative;
+  margin:-24px 0 0 -14px;
+  width:min(370px,80%);
+  box-shadow:0 12px 30px #0002
+}
+.hero-companion .orbi-avatar {
+  animation:orbi-hover 6s ease-in-out infinite
+}
+.hero-photo-caption {
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  font-size:11px;
+  color:var(--muted);
+  padding:23px 2px 0
+}
+.hero-photo-caption>span:first-child {
+  color:var(--accent-text);
+  font-size:9px;
+  letter-spacing:.12em;
+  font-weight:900
 }
 .mars-disc {
   position:absolute;
@@ -460,22 +591,24 @@ em {
 .pixel-divider {
   height:16px;
   margin:0 auto;
-  max-width:1240px;
+  width:min(1760px,95%);
   background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--mars) 31.37%,transparent),transparent);
+  -webkit-clip-path: polygon(0 70%,10% 70%,10% 50%,25% 50%,25% 30%,40% 30%,40% 0,60% 0,60% 30%,75% 30%,75% 50%,90% 50%,90% 70%,100% 70%,100% 100%,0 100%);
   clip-path:polygon(0 70%,10% 70%,10% 50%,25% 50%,25% 30%,40% 30%,40% 0,60% 0,60% 30%,75% 30%,75% 50%,90% 50%,90% 70%,100% 70%,100% 100%,0 100%)
 }
 .story-section {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:65px;
-  padding-top:76px;
-  padding-bottom:50px
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(32px,6vw,100px);
+  padding-top:52px;
+  padding-bottom:45px
 }
 .story-section .section-h {
   font-size:43px
 }
 .story-section .lead {
-  font-size:15px
+  font-size:16px
 }
 .story-section .lead+.lead {
   margin-top:17px
@@ -496,8 +629,20 @@ em {
   white-space:nowrap
 }
 .how-section {
-  padding-top:35px;
-  padding-bottom:65px
+  padding-top:28px;
+  padding-bottom:48px
+}
+.section-heading-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px
+}
+.section-aside {
+  color:var(--soft);
+  font-size:15px;
+  line-height:1.8;
+  padding-right:20px
 }
 .how-section .section-h {
   font-size:43px
@@ -510,11 +655,16 @@ em {
 }
 .mission-card {
   position:relative;
-  padding:28px;
+  padding:30px;
   border:1px solid var(--edge);
   border-radius:13px;
-  background:var(--surface);
-  overflow:hidden
+  background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 60%,transparent),transparent);
+  overflow:hidden;
+  transition:transform .2s,border-color .2s
+}
+.mission-card:hover {
+  transform:translateY(-4px);
+  border-color:var(--accent-text)
 }
 .mission-card .num {
   position:absolute;
@@ -539,7 +689,7 @@ em {
   margin:23px 0 13px
 }
 .mission-card p {
-  font-size:13px;
+  font-size:14px;
   color:var(--soft);
   line-height:1.8
 }
@@ -557,8 +707,8 @@ em {
   align-items:center;
   justify-content:space-between;
   gap:45px;
-  margin-bottom:60px;
-  padding:40px;
+  margin-bottom:48px;
+  padding:32px 38px;
   border:1px solid var(--edge);
   border-radius:16px;
   background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 3.53%,transparent),transparent),var(--surface2)
@@ -574,7 +724,22 @@ em {
   flex-shrink:0
 }
 .subhero {
-  padding:65px 0 32px
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(240px,330px);
+  align-items:center;
+  gap:clamp(28px,5vw,80px);
+  padding:38px 0 30px
+}
+.subhero-copy {
+  min-width:0
+}
+.subhero .section-h {
+  font-size:clamp(36px,3.7vw,58px);
+  margin:12px 0 17px
+}
+.subhero .orbi-companion {
+  background:color-mix(in srgb,var(--surface) 25%,transparent);
+  border-color:color-mix(in srgb,var(--orbi) 25%,var(--edge))
 }
 .subhero .lead {
   max-width:790px;
@@ -763,7 +928,7 @@ em {
   margin-bottom:12px
 }
 .science-card>p:not(.science-value) {
-  font-size:12px;
+  font-size:14px;
   line-height:1.85;
   color:var(--soft)
 }
@@ -780,14 +945,14 @@ em {
   letter-spacing:.1em
 }
 .game-connection p {
-  font-size:12px;
+  font-size:13px;
   line-height:1.8;
   color:var(--muted);
   margin-top:7px
 }
 .science-card>.text-link {
   margin-top:auto;
-  font-size:10px
+  font-size:12px
 }
 .truth-grid {
   display:grid;
@@ -911,10 +1076,10 @@ em {
   margin:5px 0 45px
 }
 .team-card {
-  padding:30px;
+  padding:26px;
   border:1px solid var(--edge);
   border-radius:13px;
-  background:var(--surface2)
+  background:linear-gradient(130deg,color-mix(in srgb,var(--surface) 70%,transparent),transparent)
 }
 .team-mark {
   display:grid;
@@ -926,7 +1091,7 @@ em {
   font-size:12px;
   color:var(--heading-accent);
   font-weight:900;
-  margin-bottom:25px
+  margin-bottom:20px
 }
 .team-card h2 {
   font-size:29px;
@@ -1003,13 +1168,21 @@ em {
   padding-bottom:40px
 }
 .play-intro {
-  padding-bottom:27px
+  padding-bottom:15px
+}
+.play-intro .section-h {
+  font-size:clamp(36px,3.3vw,52px)
+}
+.play-intro .lead {
+  font-size:14px;
+  max-width:940px;
+  line-height:1.8
 }
 .play-intro-meta {
   display:flex;
   flex-wrap:wrap;
   gap:18px;
-  margin-top:20px;
+  margin-top:13px;
   color:var(--sand);
   font-size:9px;
   font-weight:800;
@@ -1117,7 +1290,7 @@ em {
   isolation:isolate;
   overflow:hidden;
   height:min(74vh,800px);
-  min-height:560px;
+  min-height:480px;
   border:1px solid var(--edge);
   border-radius:15px;
   background:var(--navy-deep);
@@ -1602,19 +1775,30 @@ body.game-expanded,body.locked {
     transform:scale(1)
   }
 }
+@keyframes orbi-hover {
+  0%,100% { transform:translateY(0) }
+  50% { transform:translateY(-4px) }
+}
 @media(min-width:1500px) {
-  .hero-layout {
-    min-height:740px
+  .team-grid {
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:14px
   }
-  .hero-visual {
-    height:540px
+  .team-card {
+    padding:23px
+  }
+  .team-card h2 {
+    font-size:26px
+  }
+  .science-card-grid {
+    grid-template-columns:repeat(4,minmax(0,1fr))
   }
 }
 @media(max-width:1100px) {
   .shell {
     width:calc(100% - 48px)
   }
-  .header {
+  .header-inner {
     gap:20px
   }
   .header-tag {
@@ -1624,7 +1808,7 @@ body.game-expanded,body.locked {
     gap:25px
   }
   .hero-copy h1 {
-    font-size:94px
+    font-size:clamp(66px,7.1vw,90px)
   }
   .hero-tools {
     gap:9px
@@ -1633,7 +1817,7 @@ body.game-expanded,body.locked {
     padding-inline:17px
   }
   .hero-visual {
-    height:470px
+    height:auto
   }
   .hero-copy h2 {
     font-size:22px
@@ -1649,10 +1833,10 @@ body.game-expanded,body.locked {
   }
 }
 @media(max-width:800px) {
-  .header {
+  .header-inner {
     flex-wrap:wrap;
-    gap:19px;
-    padding:21px 0 13px;
+    gap:12px;
+    padding:14px 0 10px;
     min-height:0
   }
   .brand b {
@@ -1668,30 +1852,31 @@ body.game-expanded,body.locked {
   .nav {
     order:3;
     width:100%;
-    justify-content:space-between
+    justify-content:space-between;
+    margin:0
   }
   .nav button {
     flex:1;
-    font-size:10px;
-    padding:10px 7px;
+    font-size:12px;
+    padding:10px 8px;
     gap:5px
   }
   .hero-layout {
     grid-template-columns:1fr;
     min-height:0;
-    padding:45px 0 38px;
-    gap:15px
+    padding:30px 0 38px;
+    gap:32px
   }
   .hero-copy h1 {
-    font-size:100px
+    font-size:clamp(68px,12vw,96px)
   }
   .hero-copy .lead {
     max-width:620px
   }
   .hero-visual {
-    height:410px;
-    width:90%;
-    max-width:520px;
+    height:auto;
+    width:100%;
+    max-width:720px;
     justify-self:center
   }
   .mars-disc {
@@ -1713,13 +1898,34 @@ body.game-expanded,body.locked {
   .story-section {
     grid-template-columns:1fr;
     gap:15px;
-    padding-top:50px
+    padding-top:34px
   }
   .story-section .section-h,.how-section .section-h {
     font-size:38px
   }
   .threecols {
     grid-template-columns:1fr
+  }
+  .section-heading-row {
+    display:block
+  }
+  .section-aside {
+    display:none
+  }
+  .subhero {
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:30px 0 26px
+  }
+  .subhero .orbi-companion {
+    padding:12px 15px
+  }
+  .subhero .orbi-avatar {
+    width:48px;
+    height:48px
+  }
+  .play-intro .orbi-companion {
+    display:none
   }
   .mission-card {
     padding:25px
@@ -1806,29 +2012,28 @@ body.game-expanded,body.locked {
     width:calc(100% - 32px)
   }
   .brand b {
-    font-size:26px
+    font-size:25px
   }
   .header-tag {
-    font-size:7px;
-    letter-spacing:.05em
+    display:none
   }
   .nav {
     gap:1px;
     padding:4px
   }
   .nav button {
-    font-size:9px;
-    padding:10px 4px;
+    font-size:11px;
+    padding:10px 5px;
     gap:3px
   }
   .nav .index {
     display:none
   }
   .hero-layout {
-    padding-top:36px
+    padding-top:26px
   }
   .hero-copy h1 {
-    font-size:clamp(62px,20.5vw,82px);
+    font-size:clamp(62px,18vw,82px);
     margin-bottom:23px
   }
   .hero-copy h2 {
@@ -1856,8 +2061,32 @@ body.game-expanded,body.locked {
     padding-inline-start:7px
   }
   .hero-visual {
-    height:350px;
+    height:auto;
     width:100%
+  }
+  .hero-companion {
+    width:88%;
+    padding:12px;
+    gap:11px;
+    margin-top:-12px
+  }
+  .hero-companion .orbi-avatar {
+    width:48px;
+    height:48px
+  }
+  .hero-companion p {
+    font-size:12px
+  }
+  .photo-heading {
+    font-size:8px
+  }
+  .hero-photo-caption {
+    font-size:10px;
+    gap:12px;
+    padding-top:18px
+  }
+  .hero-photo-caption>span:first-child {
+    font-size:8px
   }
   .mars-disc {
     top:1%;
@@ -1903,7 +2132,10 @@ body.game-expanded,body.locked {
     font-size:38px
   }
   .subhero {
-    padding:42px 0 25px
+    padding:28px 0 25px
+  }
+  .subhero .section-h {
+    font-size:36px
   }
   .subhero .lead {
     font-size:14px
@@ -1930,8 +2162,12 @@ body.game-expanded,body.locked {
   .mars-audio h2 {
     font-size:27px
   }
-  .science-card-grid,.activity-grid,.team-grid {
+  .science-card-grid,.activity-grid {
     grid-template-columns:1fr
+  }
+  .team-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px
   }
   .science-card {
     padding:24px
@@ -1976,13 +2212,26 @@ body.game-expanded,body.locked {
     font-size:19px
   }
   .team-card {
-    padding:25px
+    padding:18px
+  }
+  .team-card h2 {
+    font-size:22px
+  }
+  .team-card p {
+    font-size:12px;
+    line-height:1.5
+  }
+  .team-mark {
+    width:34px;
+    height:34px;
+    font-size:10px;
+    margin-bottom:14px
   }
   .credits-panel h2 {
     font-size:33px
   }
   .play-intro .section-h {
-    font-size:40px
+    font-size:36px
   }
   .play-meta-left .eyebrow {
     font-size:9px

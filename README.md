@@ -24,6 +24,7 @@ Production files are in `dist/`. GitHub pushes to `main` trigger the existing Ve
 | 22 science cards, sources, team names and roles | `src/data/science.js` |
 | Mars palette and light-theme tokens | `src/config/theme.css` |
 | Page styling and responsive layouts | `src/index.css` |
+| Supplied Freddy/ORBI artwork and pixel expressions | `public/assets/characters/` |
 | Educator worksheet | `public/worksheet.html` |
 | Current Godot export | `public/game/` |
 | Versioned game data parts and checksum manifest | `game-build/` |
@@ -31,6 +32,8 @@ Production files are in `dist/`. GitHub pushes to `main` trigger the existing Ve
 Routes: `#home`, `#game`, `#resources`, `#educators`, `#team`. Older `#mission`, `#play`, `#sources`, and `#science` links remain supported. Navigation supports arrow keys, Home and End. The skip link appears on keyboard focus. The opening has English captions, a focus trap, Next, Skip and Escape, and respects reduced motion.
 
 Fonts are self-hosted Fredoka for headings, Nunito for body text, Cairo for Arabic glyphs and Press Start 2P for pixel accents. Their OFL licenses are alongside them in `public/assets/fonts/`. The approved website palette uses #16213E for the background, #0F3460 for cards, #EFC07B for headings and buttons, #FFFFFF for primary text, #AAB4C0 for muted text, #2CE8F5 for LIVE/ORBI accents and #F77622 for small Mars lines and icons. These named values and derived UI tokens live in `src/config/theme.css`; light mode uses corresponding contrast adjustments.
+
+The header spans the viewport; page content uses a fluid shared container up to 1760px with responsive gutters. The mission hero uses the team's supplied Freddy/ORBI sunset illustration, framed in CSS with a visible AI-generated label. The source JPEG is unchanged. Four supplied ORBI pixel expressions appear in companion notes and learning cards. Only the hero avatar floats gently; hover movement is small and all motion respects reduced-motion preferences. `PageIntro` shares the layout of the four supporting pages. Team credits spell Asiyah as requested.
 
 ## NASA resources
 

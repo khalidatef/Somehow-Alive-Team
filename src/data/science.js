@@ -26,6 +26,6 @@ export const scienceCards = [
 export const categories = ['All', 'Mars', 'Life support', 'Energy', 'Storms'];
 export const team = [
   { name:'Mohamed', role:'Story & science', mark:'01' }, { name:'Omar', role:'Game development', mark:'02' },
-  { name:'Khaled', role:'Website', mark:'03' }, { name:'Asia', role:'Presentation & data', mark:'04' },
+  { name:'Khaled', role:'Website', mark:'03' }, { name:'Asiyah', role:'Presentation & data', mark:'04' },
   { name:'Miraj', role:'Game art', mark:'05' }, { name:'Maryam', role:'Illustration', mark:'06' },
 ];

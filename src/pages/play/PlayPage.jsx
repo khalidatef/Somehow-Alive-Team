@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { GAME_URL } from './gameConfig';
 import { siteConfig } from '../../config/site';
+import PageIntro from '../../components/PageIntro';
 
 export default function PlayPage({ t, theme, setTheme, playing, onStart, onStop, onSources }) {
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function PlayPage({ t, theme, setTheme, playing, onStart, onStop,
   function stop() { setLoaded(false); setShowHelp(false); onStop(); }
 
   return <section className="page active" id="game" role="tabpanel" aria-labelledby="tab-game"><div className="play-shell shell">
-    <div className="subhero play-intro"><p className="eyebrow">02 / PLAY</p><h1 className="section-h">Your first sol.<br /><em>Your call.</em></h1><p className="lead">Wake up · Check the oxygen · Fix and water the greenhouse · Send a report to Earth · Split the solar power · Train in the gym · Take a selfie with a blue sunset · Survive the night.</p><div className="play-intro-meta"><span>SOL 1 · BROWSER BUILD</span><span>NO INSTALL</span><span>MOUSE & KEYBOARD</span></div></div>
+    <PageIntro className="play-intro" eyebrow="02 / PLAY" title={<>Your first sol. <em>Your call.</em></>} mood="calm" note="Stay safe. Keep the base alive. Then the mission."><p className="lead">Wake up · Check the oxygen · Fix and water the greenhouse · Send a report to Earth · Split the solar power · Train in the gym · Take a selfie with a blue sunset · Survive the night.</p><div className="play-intro-meta"><span>SOL 1 · BROWSER BUILD</span><span>NO INSTALL</span><span>MOUSE & KEYBOARD</span></div></PageIntro>
     <div className="play-meta"><div className="play-meta-left"><div className="eyebrow">{t.gameEyebrow}</div><span className="pill"><span className="dot" />{t.prototype}</span></div><div className="game-actions">
       <div className="settings-wrap" ref={settingsRef}><button className="mini-btn" type="button" ref={settingsButtonRef} aria-expanded={settingsOpen} aria-controls="settingsPop" onClick={() => setSettingsOpen(!settingsOpen)}>⚙ {t.settings}</button>
         {settingsOpen && <div className="settings-pop" id="settingsPop"><div className="title">{t.settingTheme}</div><div className="setting-choice">{['dark', 'light'].map((mode) => <button key={mode} type="button" aria-pressed={theme === mode} onClick={() => setTheme(mode)}>{t[mode]}</button>)}</div></div>}
