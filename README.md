@@ -18,9 +18,9 @@ Production files are in `dist/`. GitHub pushes to `main` trigger the existing Ve
 
 | Edit | File |
 | --- | --- |
-| Brand, game entry, default theme, 30-second opening, final demo link | `src/config/site.js` |
+| Brand, game entry, default theme, final demo link | `src/config/site.js` |
 | Shared English interface copy | `src/data/content.js` |
-| Four opening scenes | `src/data/story.js` |
+| Archived opening scenes (not shown) | `src/data/story.js` |
 | 22 science cards, sources, team names and roles | `src/data/science.js` |
 | Mars palette and light-theme tokens | `src/config/theme.css` |
 | Page styling and responsive layouts | `src/index.css` |
@@ -29,7 +29,7 @@ Production files are in `dist/`. GitHub pushes to `main` trigger the existing Ve
 | Current Godot export | `public/game/` |
 | Versioned game data parts and checksum manifest | `game-build/` |
 
-Routes: `#home`, `#game`, `#resources`, `#educators`, `#team`. Older `#mission`, `#play`, `#sources`, and `#science` links remain supported. Navigation supports arrow keys, Home and End. The skip link appears on keyboard focus. The opening has English captions, a focus trap, Next, Skip and Escape, and respects reduced motion.
+Routes: `#home`, `#game`, `#resources`, `#educators`, `#team`. Older `#mission`, `#play`, `#sources`, and `#science` links remain supported. Navigation supports arrow keys, Home and End. The skip link appears on keyboard focus. Play buttons and direct game routes load the game immediately. The former Mission Briefing dialog and its preview button are no longer part of the website flow.
 
 Fonts are self-hosted Fredoka for headings, Nunito for body text, Cairo for Arabic glyphs and Press Start 2P for pixel accents. Their OFL licenses are alongside them in `public/assets/fonts/`. The updated website palette uses #020B1B for the darker space background, #0F3460 for cards, #C75426 for the Mars accent, #E38951 for readable headings, #F6E7DB for warm primary text, #AAB4C0 for muted text and #2CE8F5 for LIVE/ORBI accents. Buttons use #B94C22 with white labels to improve contrast. These named values and derived UI tokens live in `src/config/theme.css`; light mode uses corresponding contrast adjustments.
 
@@ -68,7 +68,7 @@ Prefer a permanent in-game watermark in the source project. Archived files under
 
 Website concept SVGs carry a visible, embedded “AI-generated” label. The game’s HTML shell places the same label over the canvas, including direct view and document fullscreen. This covers the browser presentation; it does not alter the underlying Freddy sprite or provide disclosure in a native Godot build. Final artwork and in-game labels should be applied in the source project too.
 
-The website opening is a skippable storyboard preview, not the submission demo. A nine-slide presentation was supplied as a reference: “Mars Mission — Learn by Keeping the Base Alive”. Its four primary colors are now used on the website. It is not linked as the final demo: it needs a seven-slide submission version, the Somehow Alive cover name, a 4–24 minute communication-delay correction, verified build-support claims, and visible labels on any AI-generated artwork. No final video was supplied. `submissionDemoUrl` remains empty until an approved public link is available. Apply the team’s submission constraints to those files: English; a subtitled video of at most 30 seconds OR a deck of at most 7 slides; visible AI-generated labels on every AI-generated/edited image. The Team page credits AI assistance and identifies asset credits still needed from the game team.
+The former website storyboard is not displayed; Play goes directly to the embedded game. A nine-slide presentation was supplied as a reference: “Mars Mission — Learn by Keeping the Base Alive”. Its four primary colors are now used on the website. It is not linked as the final demo: it needs a seven-slide submission version, the Somehow Alive cover name, a 4–24 minute communication-delay correction, verified build-support claims, and visible labels on any AI-generated artwork. No final video was supplied. `submissionDemoUrl` remains empty until an approved public link is available. Apply the team’s submission constraints to those files: English; a subtitled video of at most 30 seconds OR a deck of at most 7 slides; visible AI-generated labels on every AI-generated/edited image. The Team page credits AI assistance and identifies asset credits still needed from the game team.
 
 No offline gameplay guarantee or physical-device touch-support claim is made. A real phone and the final hosted build still need testing before submission.
 

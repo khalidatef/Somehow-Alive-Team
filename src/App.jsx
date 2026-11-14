@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import Header from './components/Header';
 import SpaceBackdrop from './components/SpaceBackdrop';
-import StoryDialog from './components/StoryDialog';
 import HomePage from './pages/home/HomePage';
 import PlayPage from './pages/play/PlayPage';
 import SourcesPage from './pages/sources/SourcesPage';
@@ -32,13 +31,12 @@ function initialTheme() {
 export default function App() {
   const [page, setPage] = useState(getPage);
   const [theme, setTheme] = useState(initialTheme);
-  const [storyMode, setStoryMode] = useState(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(() => getPage() === 'game' && Boolean(GAME_URL));
   const t = content.en;
   const navigate = useCallback(destination => {
     const next = pages.includes(destination) ? destination : 'home';
     setPage(next);
-    if (next !== 'game') setPlaying(false);
+    setPlaying(next === 'game' && Boolean(GAME_URL));
     location.hash = next;
     window.scrollTo({
       top: 0,
@@ -49,7 +47,7 @@ export default function App() {
     const onHash = () => {
       const next = getPage();
       setPage(next);
-      if (next !== 'game') setPlaying(false);
+      setPlaying(next === 'game' && Boolean(GAME_URL));
       window.scrollTo({
         top: 0,
         behavior: 'instant'
@@ -79,20 +77,15 @@ export default function App() {
   }, [page, t]);
   function startMission() {
     navigate('game');
-    if (!GAME_URL || playing) return;
-    setStoryMode('start');
+    setPlaying(Boolean(GAME_URL));
   }
-  const finishStory = useCallback(() => {
-    if (storyMode === 'start') setPlaying(true);
-    setStoryMode(null);
-  }, [storyMode]);
-  return <><SpaceBackdrop theme={theme} /><div className="site-content" inert={storyMode !== null ? true : undefined}><a className="skip-link" href="#main-content" onClick={event => {
+  return <><SpaceBackdrop theme={theme} /><div className="site-content"><a className="skip-link" href="#main-content" onClick={event => {
         event.preventDefault();
         document.getElementById('main-content').focus();
       }}>Skip to content</a><Header page={page} onNavigate={navigate} /><main id="main-content" tabIndex={-1}>
-    {page === 'home' && <HomePage t={t} onStart={startMission} onPreview={() => setStoryMode('preview')} />}
+    {page === 'home' && <HomePage t={t} onStart={startMission} />}
     {page === 'game' && <PlayPage t={t} theme={theme} setTheme={setTheme} playing={playing} onStart={startMission} onStop={() => setPlaying(false)} onSources={() => navigate('resources')} />}
     {page === 'resources' && <SourcesPage onNavigate={navigate} />}{page === 'educators' && <EducatorsPage onNavigate={navigate} />}{page === 'team' && <TeamPage />}
     {pages.filter(route => route !== page).map(route => <section key={route} id={route} role="tabpanel" aria-labelledby={`tab-${route}`} hidden />)}
-  </main><footer className="site-footer shell"><div><strong>Somehow Alive<span>THREE SOLS. ONE ROOKIE.</span></strong><p>{t.footer}</p></div><a href="#team">Team, credits & AI use ↗</a></footer></div>{storyMode !== null && <StoryDialog t={t} language="en" mode={storyMode} onFinish={finishStory} />}</>;
+  </main><footer className="site-footer shell"><div><strong>Somehow Alive<span>THREE SOLS. ONE ROOKIE.</span></strong><p>{t.footer}</p></div><a href="#team">Team, credits & AI use ↗</a></footer></div></>;
 }

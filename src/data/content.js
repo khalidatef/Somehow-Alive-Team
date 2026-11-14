@@ -10,7 +10,7 @@ export const content = { en: {
   gameStartDesc: 'Keep the base running until the crew returns. ORBI is here to help you think, try and learn.',
   gameReady: 'SOL 1 / READY', missionStatus: 'SOL', objectiveReady: 'YOUR PRIORITIES', objectiveReadyTitle: 'Stay safe. Keep the base alive.', objectiveReadyDesc: 'Then the mission.',
   labelPower: 'POWER', labelOxygen: 'AIR', labelComms: 'EARTH LINK', scienceSources: 'Explore the science',
-  waitingForBuild: 'Build coming soon', loadingGame: 'Loading your first sol…', embedHelp: 'Still loading? Open the game in its own tab to try again.', openGame: 'Open game', backToMission: 'Restart briefing', gamePlayerLabel: 'Somehow Alive browser game',
+  waitingForBuild: 'Build coming soon', loadingGame: 'Loading your first sol…', embedHelp: 'Still loading? Open the game in its own tab to try again.', openGame: 'Open game', backToMission: 'Back to start', gamePlayerLabel: 'Somehow Alive browser game',
   gameDisclaimer: 'Click inside the game to use the keyboard. Headphones recommended.', escHint: 'ESC TO EXIT FULLSCREEN', returnResetsGame: 'Restarting or leaving this page ends the current game session.',
   loreHeader: 'MISSION BRIEFING', loreDuration: '30 SECONDS · SKIPPABLE', nextScene: 'Next', skipStart: 'Skip & play', skipClose: 'Close opening', sceneLabel: 'SCENE', storyProgressLabel: 'Opening progress',
   loreDisclaimer: 'English storyboard preview. Concept illustrations are AI-generated; final art may replace them.',

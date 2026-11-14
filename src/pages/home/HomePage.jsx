@@ -2,11 +2,10 @@ import AIArt from '../../components/AIArt';
 import Orbi, { OrbiAvatar } from '../../components/Orbi';
 export default function HomePage({
   t,
-  onStart,
-  onPreview
+  onStart
 }) {
   return <section className="page active" id="home" role="tabpanel" aria-labelledby="tab-home">
-    <div className="hero-layout shell"><div className="hero-copy"><p className="eyebrow">MARS HABITAT / SOL 01</p><h1>Somehow<br /><em>Alive.</em></h1><h2>Three sols. One rookie.<br /><span>Every choice is real science.</span></h2><p className="lead">{t.heroLead}</p><div className="hero-tools"><button className="btn btn-green btn-big" type="button" onClick={onStart}>Play Sol 1 <span>↗</span></button><button className="btn" type="button" onClick={onPreview}>▷ Watch the opening <span className="duration">30s</span></button></div><p className="hero-footnote">A browser game about learning to live on Mars.</p></div>
+    <div className="hero-layout shell"><div className="hero-copy"><p className="eyebrow">MARS HABITAT / SOL 01</p><h1>Somehow<br /><em>Alive.</em></h1><h2>Three sols. One rookie.<br /><span>Every choice is real science.</span></h2><p className="lead">{t.heroLead}</p><div className="hero-tools"><button className="btn btn-green btn-big" type="button" onClick={onStart}>Play Sol 1 <span>↗</span></button></div><p className="hero-footnote">A browser game about learning to live on Mars.</p></div>
       <div className="hero-visual"><div className="photo-heading"><span>FREDDY’S CAMERA ROLL</span><span><i /> SOL 01</span></div><AIArt src={`${import.meta.env.BASE_URL}assets/characters/freddy-orbi.jpeg`} alt="Story illustration: Freddy and ORBI taking a selfie beside a blue Martian sunset" className="hero-moment" watermark /><Orbi mood="happy" className="hero-companion">First sol? We’ll figure it out together.</Orbi><div className="hero-photo-caption"><span>FREDDY + ORBI</span><span>A little lost. Still learning.</span></div></div>
     </div>
     <div className="pixel-divider" />
