@@ -1,6 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { createReadStream } from 'node:fs';
-import { mkdir, open, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { mkdir, open, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -96,6 +96,15 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   try {
     const command = process.argv[2] ?? 'prepare';
     if (!['pack', 'prepare'].includes(command)) throw new Error('Use game-pack.mjs pack or prepare.');
+    if (command === 'prepare') {
+      const stored = JSON.parse(await readFile(defaultManifest, 'utf8'));
+      const shell = await readFile(join(root, 'public/game/somehow-alive.html'), 'utf8');
+      const config = JSON.parse(shell.match(/const GODOT_CONFIG = (.*);/)?.[1] ?? '{}');
+      const wasm = await stat(join(root, 'public/game/somehow-alive.wasm'));
+      if (config.fileSizes?.['somehow-alive.pck'] !== stored.size || config.fileSizes?.['somehow-alive.wasm'] !== wasm.size) {
+        throw new Error('Game export files do not match. Copy the complete export, update the HTML fileSizes, and run npm run game:pack before building. Existing PCK was left untouched.');
+      }
+    }
     const manifest = await (command === 'pack' ? packGame() : prepareGame());
     console.log(`Game ${command === 'pack' ? 'stored in' : 'verified from'} ${manifest.parts.length} parts (${manifest.size} bytes, SHA-256 ${manifest.sha256}).`);
   } catch (error) {
