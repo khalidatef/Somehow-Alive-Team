@@ -50,7 +50,7 @@ The November 14 `game.zip` export is integrated without modifying its PCK, WASM,
 
 The current PCK is 110,442,620 bytes, above GitHub's ordinary per-file limit. `game-build/` stores it as three binary parts of at most 40 MiB with SHA-256 checksums. The original `public/game/somehow-alive.pck` is generated and ignored by Git. Both `npm run dev` and `npm run build` automatically reconstruct and verify the exact original bytes before Vite runs. Vercel's Git integration runs the same build; no Git LFS toggle, external file host, browser reassembly or game-engine changes are needed. Parts stay outside `public/` and are not shipped alongside the reconstructed game. Always use the npm scripts instead of invoking `vite` directly after a fresh clone.
 
-The current build rendered with English controls and the task “Water the garden” during review. This is a smoke test, not verification of every dialogue or scene. `--language en` selects Godot’s locale; it cannot translate hardcoded strings. Game-source changes require the original Godot project. See `docs/GAME_HANDOFF.md` for the final export requirements.
+An earlier export rendered with English controls and the task “Water the garden” during browser review. The November 14 replacement was checked for exact binary integrity and HTTP delivery; interactive browser review was unavailable during this update. Every dialogue and scene still needs a playthrough. `--language en` selects Godot’s locale; it cannot translate hardcoded strings. Game-source changes require the original Godot project. See `docs/GAME_HANDOFF.md` for the final export requirements.
 
 To replace the build:
 
