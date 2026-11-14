@@ -1,109 +1,60 @@
-# Outpost 07 — Somehow Alive Team
+# Somehow Alive
 
-موقع React + Vite كامل مبني على المرجع `outpost07_v2_textfix.html`:
-الرئيسية، Play، المصادر العلمية، وصفحة المعلمين، بالعربي والإنجليزي ووضعين للعرض.
-اللعبة الحالية متوصلة بالفعل. المتبقي للتسليم النهائي هو اعتماد المحتوى والألوان
-ونسخة اللعبة النهائية.
+English React + Vite website for the team’s Mars learning game. The crew leaves on an ice mission; Freddy and ORBI look after the base. Content follows the supplied `somehow_alive_website_data_submission.docx`, with credited science references and clearly separated fiction and gameplay simplifications.
 
-## التشغيل
+## Run and verify
 
 ```sh
+npm install
 npm run dev
-```
-
-افتح عنوان Vite. الرئيسية بتفتح تلقائيًا؛ التنقل بين الصفحات من الـ navbar.
-الاعتماديات الحالية مثبتة. على جهاز جديد شغّل `npm install` مرة أولى.
-
-```sh
+node --test tests/spaceWeather.test.js
 npm run build
 npm run preview
 ```
 
-الناتج الجاهز للاستضافة في `dist/`. لم تتم إضافة اعتماديات npm أو Backend.
-لم يتم نشر التغييرات أو دفعها إلى GitHub في هذه المهمة.
+Production files are in `dist/`. This revision is local; it has not been pushed or deployed. The existing Vercel configuration is retained.
 
-## التعديلات النهائية — تبدأ من هنا
+## Content and identity
 
-| المطلوب | الملف |
+| Edit | File |
 | --- | --- |
-| نصوص الصفحات والعناوين والدروس بالعربي والإنجليزي | `src/data/content.js` |
-| أسماء مراحل المصادر ووصفها وروابط المراجع | `src/data/missions.js` |
-| نصوص مشاهد المقدمة الأربعة | `src/data/story.js` |
-| ألوان الوضع الداكن والفاتح | `src/config/theme.css` |
-| اسم الموقع، اللغة والثيم الافتراضيان، مدة المقدمة، رابط اللعبة وصور القصة | `src/config/site.js` |
-| ملفات اللعبة المصدرة | `public/game/` |
-| رسومات مشاهد القصة القابلة للاستبدال | `public/assets/story/` |
+| Brand, game entry, default theme, 30-second opening, final demo link | `src/config/site.js` |
+| Shared English interface copy | `src/data/content.js` |
+| Four opening scenes | `src/data/story.js` |
+| 22 science cards, sources, team names and roles | `src/data/science.js` |
+| Mars palette and light-theme tokens | `src/config/theme.css` |
+| Page styling and responsive layouts | `src/index.css` |
+| Educator worksheet | `public/worksheet.html` |
+| Current Godot export | `public/game/` |
 
-النصوص الحالية هي نصوص البروتوتايب، بما فيها المحتوى التعليمي المبدئي؛ استبدلها
-بالمعتمد للمسابقة. مفاتيح العناوين التي تحتوي HTML تدعم `<br>` و`<em>` و`<span>`
-للحفاظ على تنسيق المرجع؛ تُحرَّر محليًا داخل الملف ولا تستقبل إدخال زوار أو محتوى خارجي.
+Routes: `#home`, `#game`, `#resources`, `#educators`, `#team`. Older `#mission`, `#play`, `#sources`, and `#science` links remain supported. Navigation supports arrow keys, Home and End. The skip link appears on keyboard focus. The opening has English captions, a focus trap, Next, Skip and Escape, and respects reduced motion.
 
-في `theme.css`:
+Fonts are self-hosted Fredoka for headings, Nunito for body text, Cairo for Arabic glyphs and Press Start 2P for pixel accents. Their OFL licenses are alongside them in `public/assets/fonts/`. The approved website palette uses #16213E for the background, #0F3460 for cards, #EFC07B for headings and buttons, #FFFFFF for primary text, #AAB4C0 for muted text, #2CE8F5 for LIVE/ORBI accents and #F77622 for small Mars lines and icons. These named values and derived UI tokens live in `src/config/theme.css`; light mode uses corresponding contrast adjustments.
 
-- `--bg` للخلفية، و`--surface` و`--surface2` و`--surface3` للأسطح والكروت.
-- `--lime` للون الأساسي والأزرار، و`--mint` للون المساعد.
-- `--ink` للنص الرئيسي، و`--soft` و`--muted` للنصوص الثانوية.
-- مجموعة `:root` للوضع الداكن، و`html[data-theme=light]` للوضع الفاتح.
+## NASA resources
 
-اختيارات الزائر بتتحفظ في localStorage؛ لو غيّرت القيم الافتراضية ولم تظهر، اختبر
-في تبويب خاص أو غيّر الاختيار من إعدادات Play. الرسومات الخارجية لها ألوانها الفنية؛
-يمكن استبدال صور القصة من `storyImages` بدون تغيير مكوّن المقدمة.
+The Science page contains filterable research cards, each linking to its publisher and explaining its connection to the mission design. Historical facts are labeled ARCHIVE; concepts are labeled CONCEPT. This does not imply all planned mechanics are implemented in the current game.
 
-## الصفحات والتفاعلات
+Sun Today requests NASA CCMC DONKI/WS/get/FLR for the last seven days. A successful fresh response is LIVE. A saved result, network failure, empty feed, timeout or rate limit is ARCHIVE; the page always retains a sourced historical example (May 2024 G5). Dates and source links are visible. Cached records are never presented as live. Both the live endpoint and archive fallback were verified locally.
 
-- `#home`: الرئيسية، وتحول نص الـ hero أثناء السكرول، وكروت المهمة، ومعاينة القصة.
-- `#game`: شاشة البداية ومقدمة قابلة للتخطي ثم اللعبة الحقيقية داخل iframe، وإعدادات
-  اللغة والثيم وملء الشاشة ورابط تشغيل اللعبة مباشرة والمراجع العلمية.
-- `#resources`: ثلاث مراحل، ولكل مرحلة مراجعها. اختيار المرحلة محفوظ أثناء التنقل.
-- `#educators`: خطة حصة قبل اللعب وأثناءه وبعده، والمرشد المصور ورابط المصادر.
+NASA migrated DONKI in September 2026. The current public endpoint, `https://ccmc.gsfc.nasa.gov/DONKI/WS/get/FLR`, supports browser CORS and needs no API key. The legacy api.nasa.gov endpoint returned 404 during review. Official migration and API links: https://ccmc.gsfc.nasa.gov/tools/DONKI/ .
 
-الروابط القديمة `#mission` و`#play` و`#sources` تظل مدعومة.
-الـ navbar يدعم الكيبورد والأسهم وHome وEnd، والمقدمة تحصر التركيز داخلها وتدعم
-Escape والإغلاق والتخطي. تغيير اللغة يدعم RTL، وتقليل الحركة يُحترم في السكرول والأنيميشن.
+The bundled 20-second Mars audio comes from NASA’s SuperCam Sol 1 recording. Source: https://science.nasa.gov/resource/first-audio-recording-of-sounds-on-mars/ . Credit: NASA/JPL-Caltech/LANL/CNES/CNRS/ISAE-Supaero. It is a science resource, not the final project demo.
 
-## استبدال البيلد النهائي
+## Game integration
 
-1. صدّر نسخة Godot للمتصفح، وفك ضغطها.
-2. استبدل **محتويات** `public/game/` بكل ملفات التصدير الجديدة معًا. لا تغيّر أسماء
-   ملفات Godot يدويًا، ولا تنقل ملف HTML وحده.
-3. لو صفحة البداية لها اسم جديد، عدّل قيمة `gameEntry` في `src/config/site.js`:
+`src/pages/play/gameConfig.js` resolves `siteConfig.gameEntry` against Vite’s base URL. React embeds the export in an iframe; leaving Play or restarting removes it and ends the session. Website settings do not modify Godot’s internal state. No score or mission-state messaging protocol is currently implemented.
 
-   ```js
-   gameEntry: 'game/Iah-1.html',
-   ```
+The latest pulled PCK, WASM, engine JS and game assets are preserved. Only the export HTML shell was adapted: page title, English engine locale argument, approved loading-screen colors and fonts, and a visible AI disclosure. `submission-shell.js` keeps the title stable and redirects canvas fullscreen to the document so the disclosure remains visible. The website fullscreen control includes the whole game view.
 
-4. ملف `src/pages/play/gameConfig.js` بيبني الرابط تلقائيًا باستخدام `BASE_URL`.
-   ممكن تستخدم رابط HTTPS كامل لو سيرفر اللعبة يسمح بعرضها في iframe.
-5. جرّب اللعبة مباشرة من `/game/Iah-1.html` أولًا، ثم زر البداية في `#game`.
-6. شغّل `npm run build` و`npm run preview`، وراجع تشغيل نسخة النشر قبل رفعها.
+The current build rendered with English controls and the task “Water the garden” during review. This is a smoke test, not verification of every dialogue or scene. `--language en` selects Godot’s locale; it cannot translate hardcoded strings. Game-source changes require the original Godot project. See `docs/GAME_HANDOFF.md` for the final export requirements.
 
-اللعبة الحالية هي آخر Build تم استلامه سابقًا، وملفاته لم تتعدل أثناء استكمال الموقع.
-إعداد `GODOT_THREADS_ENABLED` الحالي هو `false`؛ لم نضف headers عزل غير لازمة له.
-عند النشر استخدم HTTPS وقدّم `.wasm` بنوع `application/wasm`، وراجع متطلبات أي تصدير جديد.
+To replace the build, copy all export files together into `public/game/`, update `gameEntry` if needed, and preserve or reapply the shell disclosure, English locale and `submission-shell.js` include. Prefer a permanent in-game watermark in the source project. Test both the direct game URL and the embedded player. Archived files under `public/game/old/` are not the active game and were left as supplied.
 
-لو نسخة النشر بتظهر ملفات مفقودة، تأكد إن الاستضافة بتقدم الملفات الموجودة فعليًا
-من `dist/game/` قبل الرجوع إلى صفحة React. الروابط الرئيسية Hash routes، فلا تحتاج
-قواعد rewrite إضافية لهذا التنقل. إعداد `vercel.json` الموجود لم يتغيّر.
+## AI disclosure and final submission assets
 
-## حدود اللعبة الحالية
+Website concept SVGs carry a visible, embedded “AI-generated” label. The game’s HTML shell places the same label over the canvas, including direct view and document fullscreen. This covers the browser presentation; it does not alter the underlying Freddy sprite or provide disclosure in a native Godot build. Final artwork and in-game labels should be applied in the source project too.
 
-- React بيشغّل اللعبة ويعرضها؛ الموقع لا يقرأ النتيجة أو المرحلة أو حالة الأنظمة تلقائيًا.
-  كروت المهمة والمراجع محتوى من البروتوتايب وجاهز لتحديثه حسب اللعبة النهائية.
-- لغة وثيم الموقع لا يغيران إعدادات Godot الداخلية.
-- الرجوع لشاشة البداية أو مغادرة Play بيزيل iframe وينهي الجلسة الحالية، وليس pause/resume.
-- `iframe onLoad` معناه إن صفحة اللعبة اتحملت؛ Godot يعرض شاشة التحميل الخاصة بمحركه.
-- أثناء مراجعة البيلد الحالي، Console عرض رسالة `Parameter "t" is null` مع موضع
-  `res://Scripts/helmet_light.gd:8` و`texture_remove_from_texture_atlas`.
-  اللعبة بدأت وظهرت، لكن الرسالة تخص سكريبت إضاءة الخوذة داخل Godot ويجب مراجعتها
-  مع مطور اللعبة في البيلد النهائي. لم نعدّل ملفات اللعبة أو نخفِ الرسالة.
+The website opening is a skippable storyboard preview, not the submission demo. A nine-slide presentation was supplied as a reference: “Mars Mission — Learn by Keeping the Base Alive”. Its four primary colors are now used on the website. It is not linked as the final demo: it needs a seven-slide submission version, the Somehow Alive cover name, a 4–24 minute communication-delay correction, verified build-support claims, and visible labels on any AI-generated artwork. No final video was supplied. `submissionDemoUrl` remains empty until an approved public link is available. Apply the team’s submission constraints to those files: English; a subtitled video of at most 30 seconds OR a deck of at most 7 slides; visible AI-generated labels on every AI-generated/edited image. The Team page credits AI assistance and identifies asset credits still needed from the game team.
 
-## التحقق المنفذ
-
-- بناء Vite للإنتاج واكتمال مفاتيح المحتوى في اللغتين وأصول مشاهد القصة.
-- التنقل بين الصفحات، وتبديل مرحلة المصادر، ومعاينة القصة وإغلاقها، وتقدم مشاهدها وتخطيها للعبة.
-- ظهور البيلد الحالي داخل Play وملء الشاشة والخروج منه.
-- تحول عنوان الرئيسية أثناء السكرول، والعربي والوضع الفاتح، وعرض 375px في محاكاة Chrome.
-- روابط NASA الستة أعادت HTTP 200 أثناء المراجعة.
-
-محاكاة مقاس الموبايل لا تؤكد دعم التحكم باللمس داخل اللعبة؛ ده يحتاج تجربة على
-جهاز فعلي ودعمًا من مطور Godot. الاستضافة النهائية والبيلد النهائي لم يتم اختبارهما بعد.
+No offline gameplay guarantee or physical-device touch-support claim is made. A real phone and the final hosted build still need testing before submission.

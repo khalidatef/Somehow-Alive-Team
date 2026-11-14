@@ -1,41 +1,10 @@
-export default function EducatorsPage({ t, onNavigate }) {
-  return (<section className="page shell active" id="educators" role="tabpanel" aria-labelledby="tab-educators"><div className="subhero"><div className="eyebrow">{t.eduEyebrow}</div>
-<h1 className="section-h" dangerouslySetInnerHTML={{ __html: t.eduTitle }}></h1>
-<p className="lead">{t.eduDesc}</p>
-</div>
-<div className="edu-layout"><div className="edu-main"><div className="edu-top"><span className="eyebrow">{t.lessonFormat}</span>
-<span className="pill"><span className="dot"></span>
-<span>{t.toBeApproved}</span>
-</span>
-</div>
-<h2>{t.eduModuleTitle}</h2>
-<p>{t.eduModuleDesc}</p>
-<div className="edu-stage"><span className="n">{"01"}</span>
-<div><h3>{t.eduBefore}</h3>
-<p>{t.eduBeforeDesc}</p>
-</div>
-</div>
-<div className="edu-stage"><span className="n">{"02"}</span>
-<div><h3>{t.eduDuring}</h3>
-<p>{t.eduDuringDesc}</p>
-</div>
-</div>
-<div className="edu-stage"><span className="n">{"03"}</span>
-<div><h3>{t.eduAfter}</h3>
-<p>{t.eduAfterDesc}</p>
-</div>
-</div>
-</div>
-<aside className="edu-aside"><div className="eyebrow">{t.meetGuide}</div>
-<div className="robot-art" aria-label="Concept mascot artwork to be replaced by game character"><svg viewBox="0 0 250 238" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M98 34 90 10m60 24 8-24" stroke="var(--mint)" strokeWidth="8" strokeLinecap="round" /><circle cx="90" cy="9" r="8" fill="var(--lime)" /><circle cx="159" cy="9" r="8" fill="var(--lime)" /><rect x="49" y="45" width="154" height="119" rx="46" fill="var(--surface3)" stroke="var(--lime)" strokeWidth="7" /><rect x="68" y="66" width="117" height="72" rx="29" fill="#11303f" stroke="var(--mint)" strokeWidth="5" /><ellipse cx="106" cy="105" rx="10" ry="15" fill="var(--lime)" /><ellipse cx="149" cy="105" rx="10" ry="15" fill="var(--lime)" /><path d="M113 127q14 14 29 0" stroke="var(--lime)" strokeWidth="4" strokeLinecap="round" /><path d="M69 159v36l-19 25m130-61v36l19 25" stroke="var(--mint)" strokeWidth="14" strokeLinecap="round" /><path d="M92 162v52m74-52v52" stroke="var(--edge)" strokeWidth="19" strokeLinecap="round" /><path d="M90 214h-24m101 0h24" stroke="var(--lime)" strokeWidth="10" strokeLinecap="round" /><path d="M44 95H25m178 0h19" stroke="var(--lime)" strokeWidth="11" strokeLinecap="round" /></svg>
-</div>
-<div className="bubble">{t.robotBubble}</div>
-<h3>{t.eduAsideTitle}</h3>
-<p>{t.eduAsideDesc}</p>
-<button className="btn btn-green" type="button" onClick={() => onNavigate("resources")}><span>{t.exploreSources}</span>
-{" ↗"}</button>
-</aside>
-</div>
-</section>
-);
+const activities = [['01', 'Calculate the delay', 'Distance ÷ speed of light', '225 million km ÷ 300,000 km/s = 750 seconds = 12.5 minutes, one way. Why can’t Freddy wait for an immediate answer?'], ['02', 'Your weight on Mars', 'Earth weight × 0.38', 'An Earth scale reading of 40 kg corresponds to about 15.2 kg-equivalent weight on Mars. Mass stays the same; gravitational force changes.'], ['03', 'Budget the energy', '100 units. The night needs 75.', 'Allocate the available power between the battery, greenhouse and radio. Compare your choices and explain what you protected first.'], ['04', 'Decide before Earth replies', 'What would you do?', 'You are Freddy. There is a problem, and Earth will not reply for 25 minutes. What can you check? What should you prepare before a storm?']];
+export default function EducatorsPage({
+  onNavigate
+}) {
+  return <section className="page shell active" id="educators" role="tabpanel" aria-labelledby="tab-educators"><div className="subhero"><p className="eyebrow">04 / EDUCATORS</p><h1 className="section-h">Turn a first sol<br /><em>into a good question.</em></h1><p className="lead">For ages 7–12 · 15 minutes of play + 20 minutes of classroom activity.</p></div>
+    <div className="educator-intro"><article><p className="eyebrow">WHAT STUDENTS EXPLORE</p><h2>Big science.<br />Everyday decisions.</h2><ul><li>Why Martian days, sunlight and gravity are different.</li><li>How astronauts recycle water and produce oxygen.</li><li>Why messages between Earth and Mars are delayed.</li><li>How planning ahead changes what happens next.</li></ul></article><aside><p className="eyebrow">ORBI’S CLASSROOM RULE</p><blockquote>“The wrong choice is not the end. Explain it, rewind it, try again.”</blockquote><p>Ask students to connect each decision to a source, then compare their reasoning with a classmate.</p><a className="btn btn-green" href={`${import.meta.env.BASE_URL}worksheet.html`} target="_blank" rel="noopener noreferrer">Print / save worksheet as PDF ↗</a></aside></div>
+    <div className="activity-grid">{activities.map(([n, title, formula, text]) => <article className="activity-card" key={n}><span className="num">{n}</span><h2>{title}</h2><p className="activity-formula">{formula}</p><p>{text}</p></article>)}</div>
+    <div className="lesson-flow"><span>BEFORE PLAY <b>Predict</b></span><span>→</span><span>DURING PLAY <b>Experiment</b></span><span>→</span><span>AFTER PLAY <b>Explain</b></span></div><div className="resource-back"><button className="btn" type="button" onClick={() => onNavigate('resources')}>Explore the science ↗</button><button className="btn btn-green" type="button" onClick={() => onNavigate('game')}>Play Sol 1 ↗</button></div>
+  </section>;
 }

@@ -1,39 +1,55 @@
-/* Final palette: edit these variables to recolor the site. */
 :root {
-  --bg:#080e19;
-  --surface:#111b2a;
-  --surface2:#162437;
-  --surface3:#1d3145;
-  --ink:#f3f6ef;
-  --soft:#b5c7ce;
-  --muted:#869aa9;
-  --edge:#405567;
-  --edge2:rgba(172,215,215,.15);
-  --lime:#b6ff5c;
-  --lime-deep:#81c83d;
-  --mint:#80dfcb;
-  --orange:#f4b46e;
-  --red:#f88383;
-  --dark:#06110f;
-  --shadow:0 20px 70px #0007
-}
+  /* Approved team palette. Edit these values to update the website identity. */
+  --bg: #16213E;
+  --surface: #0F3460;
+  --gold: #EFC07B;
+  --text: #FFFFFF;
+  --muted: #AAB4C0;
+  --teal: #2CE8F5;
+  --mars: #F77622;
 
+  --blue: var(--surface);
+  --navy: var(--bg);
+  --navy-deep: #1A1A2E;
+  --surface2: var(--surface);
+  --surface3: #21446b;
+  --ink: var(--text);
+  --soft: var(--muted);
+  --edge: #3d5674;
+  --edge2: #46617e;
+  --on-dark-text: #FFFFFF;
+  --on-dark-muted: #AAB4C0;
+  --on-dark-edge: #3d5674;
+  --accent: var(--gold);
+  --accent-text: var(--gold);
+  --accent-deep: #d7a35f;
+  --accent-hover: #f6d7aa;
+  --orbi: var(--teal);
+  --heading-accent: var(--gold);
+  --red: #ee796f;
+  --success: #86c8a4;
+  --sand: var(--gold);
+  --shadow: 0 24px 70px #0004;
+  color-scheme: dark;
+}
 html[data-theme=light] {
-  --bg:#eef2ec;
-  --surface:#fffef8;
-  --surface2:#ecf4f1;
-  --surface3:#dce9e3;
-  --ink:#142a35;
-  --soft:#3b5863;
-  --muted:#56717b;
-  --edge:#96abb2;
-  --edge2:rgba(34,81,99,.17);
-  --lime:#85b73d;
-  --lime-deep:#639e28;
-  --mint:#247e79;
-  --orange:#c07d37;
-  --red:#cb4b54;
-  --dark:#f8fcf2;
-  --shadow:0 24px 55px #29465320
+  --bg: #f8f4eb;
+  --surface: #ffffff;
+  --blue: #0F3460;
+  --navy: #16213E;
+  --surface2: #e8edf4;
+  --surface3: #dce5ef;
+  --text: var(--navy-deep);
+  --soft: #344965;
+  --muted: #536782;
+  --edge: #bdc9d7;
+  --edge2: #cdd7e2;
+  --teal: #096a78;
+  --mars: #b24b0d;
+  --heading-accent: var(--blue);
+  --accent-text: var(--blue);
+  --red: #ad3a33;
+  --sand: var(--blue);
+  --shadow: 0 24px 70px #16213e14;
+  color-scheme: light;
 }
-

@@ -1,10 +1,11 @@
-// Final handoff settings. Edit content in src/data/ and colors in theme.css.
 export const siteConfig = {
-    name: 'OUTPOST 07',
-    subtitle: 'THE LAST SIGNAL',
-    defaultLanguage: 'en',
-    defaultTheme: 'dark',
-    gameEntry: 'game/somehow-alive.html',
-    storyDurationSeconds: 30,
-    storyImages: [1, 2, 3, 4].map((number) => `assets/story/scene-${number}.svg`),
+  name: 'Somehow Alive',
+  subtitle: 'Three sols. One rookie.',
+  defaultLanguage: 'en',
+  defaultTheme: 'dark',
+  gameEntry: 'game/somehow-alive.html',
+  storyDurationSeconds: 30,
+  storyImages: [1, 2, 3, 4].map((number) => `assets/story/scene-${number}.svg`),
+  publicUrl: 'https://somehow-alive-team.vercel.app/',
+  submissionDemoUrl: '', // Add the team's final public video (<=30 s) or deck (<=7 slides).
 };

@@ -1,18 +1,16 @@
-import { missions } from '../../data/missions';
-
-export default function SourcesPage({ t, language, stage, setStage, onNavigate }) {
-  const stages = missions[language];
-  const current = stages[Math.min(stage, stages.length - 1)];
-  return <section className="page shell active" id="resources" role="tabpanel" aria-labelledby="tab-resources">
-    <div className="subhero"><div className="eyebrow">{t.resourcesEyebrow}</div><h1 className="section-h" dangerouslySetInnerHTML={{ __html: t.resourcesTitle }} /><p className="lead">{t.resourcesDesc}</p></div>
-    <div className="resources-layout">
-      <div className="resource-nav" role="group" aria-label={t.missionStageLabel}>{stages.map((item, index) => <button type="button" key={item.id} aria-pressed={stage === index} onClick={() => setStage(index)}>{[t.stageOne, t.stageTwo, t.stageThree][index]}</button>)}</div>
-      <div className="resources-panel" aria-live="polite" aria-atomic="true">
-        <div className="resource-top"><div><span className="eyebrow">{current.kicker}</span><h2>{current.title}</h2><p>{current.desc}</p></div><div className="resource-symbol" aria-hidden="true">{current.icon}</div></div>
-        <div className="sources-list">{current.sources.map((source) => <article className="source-card" key={source.url}><div className="origin">{source.org}</div><h3>{source.title}</h3><p>{source.description}</p><a href={source.url} target="_blank" rel="noopener noreferrer">{t.openSource} ↗</a></article>)}</div>
-      </div>
-      <div className="resource-note"><strong aria-hidden="true">ⓘ</strong><span>{t.resourceNote}</span></div>
-      <div className="resource-back"><button className="btn btn-green" type="button" onClick={() => onNavigate('game')}>{t.backToPlay} ↗</button></div>
-    </div>
+import { useState } from 'react';
+import SunToday from '../../components/SunToday';
+import { scienceCards, categories } from '../../data/science';
+export default function SourcesPage({
+  onNavigate
+}) {
+  const [category, setCategory] = useState('All');
+  const cards = scienceCards.filter(card => category === 'All' || card.category === category);
+  return <section className="page shell active science-page" id="resources" role="tabpanel" aria-labelledby="tab-resources"><div className="subhero"><p className="eyebrow">03 / THE SCIENCE</p><h1 className="section-h">Real Mars.<br /><em>Real things to discover.</em></h1><p className="lead">The facts behind Freddy’s decisions, from NASA and our other research sources. Each card shows where the idea appears in the team’s mission design.</p></div>
+    <div className="science-feature-grid"><SunToday /><article className="mars-audio"><p className="eyebrow">SOUND OF MARS</p><h2>Close your eyes.<br /><em>You’re on another planet.</em></h2><p>SuperCam on Perseverance · February 19, 2021 · Sol 1, about 18 hours after landing.</p><audio controls preload="none" aria-label="SuperCam’s first-sol recording on Mars"><source src={`${import.meta.env.BASE_URL}assets/audio/mars-sol-1.mp3`} type="audio/mpeg" />Your browser does not support audio playback.</audio><small>Credit: NASA/JPL-Caltech/LANL/CNES/CNRS/ISAE-Supaero</small><a className="text-link" href="https://science.nasa.gov/resource/first-audio-recording-of-sounds-on-mars/" target="_blank" rel="noopener noreferrer">Recording, context & credits ↗</a></article></div>
+    <div className="resource-nav" role="group" aria-label="Filter science topics">{categories.map(item => <button type="button" key={item} aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div><p className="results-count" role="status">{cards.length} research cards · historical references are marked ARCHIVE</p>
+    <div className="science-card-grid">{cards.map(card => <article className="science-card" key={card.id}><div className="science-card-head"><span>{card.category}</span><span className={`data-tag ${card.kind ? 'concept' : 'archive'}`}>{card.kind || 'ARCHIVE'}</span></div><p className="science-value">{card.value}</p><h2>{card.title}</h2><p>{card.fact}</p><div className="game-connection"><b>IN OUR MISSION</b><p>{card.used}</p></div><a className="text-link" href={card.url} target="_blank" rel="noopener noreferrer">{card.source} ↗</a></article>)}</div>
+    <section className="truth-grid" aria-label="Science, simplification and fiction"><article><span className="data-tag live">REAL</span><h2>Facts with sources.</h2><p>The scientific numbers on the cards link to their reference. Live solar updates are clearly separated from historical records.</p></article><article><span className="data-tag concept">SIMPLIFIED FOR PLAY</span><h2>Built to be playable.</h2><p>The 50-minute storm warning, three-day mission, power units and “reply in 24 min” are gameplay simplifications.</p></article><article><span className="data-tag archive">FICTION</span><h2>A story grounded in science.</h2><p>Robots printing the base before the crew, the pressurized rover cabin, ICE CAMP and the beacon are fictional elements inspired by NASA concepts.</p></article></section>
+    <div className="resource-back"><button className="btn btn-green" type="button" onClick={() => onNavigate('game')}>Back to Play ↗</button></div>
   </section>;
 }

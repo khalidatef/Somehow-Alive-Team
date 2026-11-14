@@ -1,0 +1,8 @@
+{
+  "kind": "Geomagnetic storm",
+  "classification": "G5",
+  "occurredAt": "2024-05-10",
+  "sourceUrl": "https://science.nasa.gov/science-research/heliophysics/what-nasa-is-learning-from-the-biggest-geomagnetic-storm-in-20-years/",
+  "fetchedAt": null,
+  "source": "NASA historical example"
+}

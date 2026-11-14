@@ -1,55 +1,6 @@
-// Editable bilingual content from the supplied Outpost 07 prototype.
-export const story = {
-  "en": [
-    {
-      "tag": "01 / ARRIVAL",
-      "title": "A routine expedition.",
-      "text": "A team of experienced explorers arrives at a remote space outpost. It should be a simple mission.",
-      "quote": "“Everything is under control.”"
-    },
-    {
-      "tag": "02 / INCIDENT",
-      "title": "Then, the incident.",
-      "text": "Something unexpected damages the station. The alarms begin, and the situation turns serious.",
-      "quote": "“WARNING: SYSTEM FAILURE.”"
-    },
-    {
-      "tag": "03 / MISSING CREW",
-      "title": "The experts are gone.",
-      "text": "The experienced crew disappears. Only one rookie astronaut remains behind.",
-      "quote": "“Commander? Can anybody hear me?”"
-    },
-    {
-      "tag": "04 / YOUR TURN",
-      "title": "You are in charge.",
-      "text": "You have almost no experience, but the station is now your responsibility. Learn, decide, and save it.",
-      "quote": "“Welcome, new Commander.”"
-    }
-  ],
-  "ar": [
-    {
-      "tag": "٠١ / الوصول",
-      "title": "رحلة عادية للفضاء.",
-      "text": "فريق من الخبراء وصل لقاعدة فضائية بعيدة. المفروض إنها مهمة بسيطة.",
-      "quote": "«كل حاجة تحت السيطرة.»"
-    },
-    {
-      "tag": "٠٢ / الحادث",
-      "title": "وبعدين حصلت المشكلة.",
-      "text": "حصل حادث غير متوقع عطّل القاعدة. الإنذارات اشتغلت والوضع بقى خطير.",
-      "quote": "«تحذير: أعطال في الأنظمة!»"
-    },
-    {
-      "tag": "٠٣ / الاختفاء",
-      "title": "الخبراء اختفوا.",
-      "text": "أفراد الطاقم أصحاب الخبرة اختفوا. فاضل رائد فضاء واحد مبتدئ.",
-      "quote": "«يا جماعة؟ حد سامعني؟»"
-    },
-    {
-      "tag": "٠٤ / دورك",
-      "title": "إنت دلوقتي المسؤول.",
-      "text": "خبرتك قليلة، بس القاعدة كلها مسؤوليتك. اتعلّم وخد قراراتك وأنقذها.",
-      "quote": "«أهلًا بالقائد الجديد.»"
-    }
-  ]
-};
+export const story = { en: [
+  { tag: '01 / FIRST HOME', title: 'A home from red dust.', text: 'Robots 3D-printed the first home on Mars from its own red dust. Then the crew arrived: a commander, a geologist, a pilot… and Freddy.', quote: 'A new home. A very long way from Earth.' },
+  { tag: '02 / MEET FREDDY', title: 'Top of his class. New to Mars.', text: 'Freddy knows the science. This is his first time putting it to work on Mars, with ORBI the robot by his side.', quote: 'Three crew rules: stay safe, keep the base alive, then the mission.' },
+  { tag: '03 / THE ICE MISSION', title: 'The crew heads out.', text: 'The experienced crew drives off to bring back ice. Freddy is trusted to keep the air flowing, the greenhouse growing and the lights on until they return.', quote: 'The crew has a mission. Freddy has the base.' },
+  { tag: '04 / YOUR CALL', title: 'Out here, you decide.', text: 'Messages to Earth take minutes. With ORBI to help, plan ahead, explore the science and learn from every choice. If a day goes wrong, try it again.', quote: 'Welcome to your first sol, Freddy.' },
+] };
