@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "game:pack": "node scripts/game-pack.mjs pack",
+    "game:prepare": "node scripts/game-pack.mjs prepare",
+    "predev": "npm run game:prepare",
     "dev": "vite",
+    "prebuild": "npm run game:prepare",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

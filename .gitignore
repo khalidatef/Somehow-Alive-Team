@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Reconstructed automatically from game-build/ before dev/build.
+/public/game/somehow-alive.pck
+/public/game/somehow-alive.pck.*.tmp
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

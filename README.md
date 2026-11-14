@@ -12,7 +12,7 @@ npm run build
 npm run preview
 ```
 
-Production files are in `dist/`. This revision is local; it has not been pushed or deployed. The existing Vercel configuration is retained.
+Production files are in `dist/`. GitHub pushes to `main` trigger the existing Vercel deployment. The existing Vercel configuration is retained.
 
 ## Content and identity
 
@@ -26,6 +26,7 @@ Production files are in `dist/`. This revision is local; it has not been pushed 
 | Page styling and responsive layouts | `src/index.css` |
 | Educator worksheet | `public/worksheet.html` |
 | Current Godot export | `public/game/` |
+| Versioned game data parts and checksum manifest | `game-build/` |
 
 Routes: `#home`, `#game`, `#resources`, `#educators`, `#team`. Older `#mission`, `#play`, `#sources`, and `#science` links remain supported. Navigation supports arrow keys, Home and End. The skip link appears on keyboard focus. The opening has English captions, a focus trap, Next, Skip and Escape, and respects reduced motion.
 
@@ -45,11 +46,20 @@ The bundled 20-second Mars audio comes from NASA’s SuperCam Sol 1 recording. S
 
 `src/pages/play/gameConfig.js` resolves `siteConfig.gameEntry` against Vite’s base URL. React embeds the export in an iframe; leaving Play or restarting removes it and ends the session. Website settings do not modify Godot’s internal state. No score or mission-state messaging protocol is currently implemented.
 
-The latest pulled PCK, WASM, engine JS and game assets are preserved. Only the export HTML shell was adapted: page title, English engine locale argument, approved loading-screen colors and fonts, and a visible AI disclosure. `submission-shell.js` keeps the title stable and redirects canvas fullscreen to the document so the disclosure remains visible. The website fullscreen control includes the whole game view.
+The November 14 `game.zip` export is integrated without modifying its PCK, WASM, engine JS or artwork. Only the export HTML shell was adapted: page title, English engine locale argument, approved loading-screen colors and fonts, and a visible AI disclosure. `submission-shell.js` keeps the title stable and redirects canvas fullscreen to the document so the disclosure remains visible. The website fullscreen control includes the whole game view.
+
+The current PCK is 110,442,620 bytes, above GitHub's ordinary per-file limit. `game-build/` stores it as three binary parts of at most 40 MiB with SHA-256 checksums. The original `public/game/somehow-alive.pck` is generated and ignored by Git. Both `npm run dev` and `npm run build` automatically reconstruct and verify the exact original bytes before Vite runs. Vercel's Git integration runs the same build; no Git LFS toggle, external file host, browser reassembly or game-engine changes are needed. Parts stay outside `public/` and are not shipped alongside the reconstructed game. Always use the npm scripts instead of invoking `vite` directly after a fresh clone.
 
 The current build rendered with English controls and the task “Water the garden” during review. This is a smoke test, not verification of every dialogue or scene. `--language en` selects Godot’s locale; it cannot translate hardcoded strings. Game-source changes require the original Godot project. See `docs/GAME_HANDOFF.md` for the final export requirements.
 
-To replace the build, copy all export files together into `public/game/`, update `gameEntry` if needed, and preserve or reapply the shell disclosure, English locale and `submission-shell.js` include. Prefer a permanent in-game watermark in the source project. Test both the direct game URL and the embedded player. Archived files under `public/game/old/` are not the active game and were left as supplied.
+To replace the build:
+
+1. Copy the matching Web export files into `public/game/`, retaining the current filename `somehow-alive`. Skip editor-only `.import` sidecars. Update `gameEntry` and the packaging script paths if the export basename changes.
+2. Preserve or reapply the shell disclosure, English locale, loading colors and `submission-shell.js` include. Set the HTML `GODOT_CONFIG.fileSizes` values to the new PCK/WASM byte counts.
+3. Run `npm run game:pack` after copying the new PCK. This replaces the versioned parts and checksum manifest. Do not stage the generated PCK or use `git add -f` on it.
+4. Run `node --test tests/gamePack.test.mjs tests/spaceWeather.test.js` and `npm run build`. Test both the direct game URL and the embedded player, then commit the export shell, assets and `game-build/` together and push.
+
+Prefer a permanent in-game watermark in the source project. Archived files under `public/game/old/` are not the active game and were left as supplied.
 
 ## AI disclosure and final submission assets
 

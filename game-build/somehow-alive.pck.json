@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "size": 110442620,
+  "sha256": "8afb5da566a64eb41e04e15f666533ec3e9d77c2685f6bb1f911168ce9899d12",
+  "parts": [
+    {
+      "file": "somehow-alive.pck.16a13509593b5175de985271c58c9ab3c220ceaf80fdd823d826d906b4568247.part",
+      "size": 41943040,
+      "sha256": "16a13509593b5175de985271c58c9ab3c220ceaf80fdd823d826d906b4568247"
+    },
+    {
+      "file": "somehow-alive.pck.1b23f95b5b239a7dc661eba70bb11059c796c5e924e7dc48115fd390f4adb45a.part",
+      "size": 41943040,
+      "sha256": "1b23f95b5b239a7dc661eba70bb11059c796c5e924e7dc48115fd390f4adb45a"
+    },
+    {
+      "file": "somehow-alive.pck.48f7dd352c51800a2d5fffb9b785e49206e7e3f95e8ccfdd59e6e0842713a3da.part",
+      "size": 26556540,
+      "sha256": "48f7dd352c51800a2d5fffb9b785e49206e7e3f95e8ccfdd59e6e0842713a3da"
+    }
+  ]
+}
