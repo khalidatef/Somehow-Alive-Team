@@ -1,0 +1,17 @@
+.space-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 18% 30%, #17407720, transparent 55%),
+    radial-gradient(ellipse at 85% 70%, #23306618, transparent 45%);
+}
+.space-scene canvas { display: block; width: 100%; height: 100%; }
+.site-content { position: relative; z-index: 1; }
+.site-content .header {
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--edge) 35%, transparent);
+}
+.header .nav { background: transparent; }
+html[data-theme="light"] .space-scene { display: none; }

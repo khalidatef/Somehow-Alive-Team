@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import Header from './components/Header';
+import SpaceBackdrop from './components/SpaceBackdrop';
 import StoryDialog from './components/StoryDialog';
 import HomePage from './pages/home/HomePage';
 import PlayPage from './pages/play/PlayPage';
@@ -85,7 +86,7 @@ export default function App() {
     if (storyMode === 'start') setPlaying(true);
     setStoryMode(null);
   }, [storyMode]);
-  return <><div className="space-background" aria-hidden="true"><span className="stars-far" /><span className="stars-near" /></div><div inert={storyMode !== null ? true : undefined}><a className="skip-link" href="#main-content" onClick={event => {
+  return <><SpaceBackdrop theme={theme} /><div className="site-content" inert={storyMode !== null ? true : undefined}><a className="skip-link" href="#main-content" onClick={event => {
         event.preventDefault();
         document.getElementById('main-content').focus();
       }}>Skip to content</a><Header page={page} onNavigate={navigate} /><main id="main-content" tabIndex={-1}>
